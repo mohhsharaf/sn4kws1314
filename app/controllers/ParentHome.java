@@ -2,7 +2,7 @@ package controllers;
 
 import models.Kid;
 import models.Parent;
-import models.UserImage;
+import play.db.jpa.Blob;
 import play.mvc.Controller;
 
 public class ParentHome extends Controller {
@@ -27,20 +27,15 @@ public class ParentHome extends Controller {
 		Index.index();
 	}
 	
-	public static void addKid(String kidName, String kidPassword, UserImage kidPicture)
-	{
-		System.out.println();System.out.println();System.out.println();System.out.println();System.out.println();
-		System.out.println("KID PICTURE :" + (kidPicture == null) + " " + (kidPicture.imageBlob == null));
-//		System.out.println("KID PICTURE :" + (kidPictureBlob == null));
-		
+	public static void addKid(String kidName, String kidPassword)
+	{		
 		if(session.contains("parentId"))
 		{
 			Parent parent = Parent.findById(Long.parseLong(session.get("parentId")));
 			if(parent != null)
 			{
 				
-//				Kid kid = new Kid(kidName, kidPassword, parent, kidPicture.imageBlob);
-				Kid kid = new Kid(kidName, kidPassword, parent, kidPicture.imageBlob);
+				Kid kid = new Kid(kidName, kidPassword, parent);
 				kid.save();
 				
 				System.out.println("kid added !");
