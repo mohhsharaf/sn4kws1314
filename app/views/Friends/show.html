@@ -1,0 +1,21 @@
+#{extends 'main.html' /}
+#{set title:friend.name /}
+
+<h1>Profile</h1>
+
+#{form @show(friend.id)}
+    <p>
+        <strong>Name:</strong> ${friend.name}
+    </p>        
+    <p>
+        <strong>City:</strong> ${friend.city}
+    </p>   
+    
+    <p>
+        <strong>Country:</strong> ${friend.country}
+    </p>   
+    
+    <p class="buttons">
+        <!-- <input type="submit" value="Send Request"> --> <a href="@{index()}">Back to search</a>      
+    </p>
+#{/form}

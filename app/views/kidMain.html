@@ -1,0 +1,20 @@
+#{extends 'main.html'/}
+        
+<div id="search_div">
+	#{form @KidSearchResults.search()}
+        <p>
+            <input type="text" name="searchString" size="16" #{if searchString} value="${searchString}" #{/if}> <input type="submit" value="Search">
+        </p>
+#{/form}
+
+#{if kid}
+<a href="@{KidLogin.logout()}">Kid Logout</a>
+#{/if}
+#{else}
+<a href="@{ParentHome.page()}">To Parent Home</a>
+#{/else}
+
+</div>
+
+
+#{doLayout /}

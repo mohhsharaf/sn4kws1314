@@ -1,0 +1,28 @@
+#{if friends}
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>                
+                <th>Location</th>        
+           </tr>
+        </thead>
+        <tbody>
+            #{list friends, as:'friend'}
+                <tr>                    
+                    <td>
+                        <a href="@{show(friend.id)}">${friend.name}</a>
+                    </td>                                       
+                    <td>${friend.city}, ${friend.country}</td>                 
+                    
+                </tr>
+            #{/list}
+        </tbody>
+    </table>
+    
+#{/if}
+
+#{else}
+    <p>
+        No more results
+    </p>
+#{/else}      

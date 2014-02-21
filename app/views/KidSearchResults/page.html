@@ -1,0 +1,21 @@
+#{extends 'kidMain.html' /}
+#{set title: searchString /}
+
+Kid search results
+
+
+#{if kidList}
+<br>
+<br>
+	#{list kidList, as:'otherKid'}
+		<span>${otherKid.name}  #{if kidFriends} #{if kidFriends.get(otherKid_index -1) == true} <a href="@{KidSearchResults.removeFriend(otherKid.id)}"> Remove Friend</a> #{/if} 
+											#{else} <a href="@{KidSearchResults.addFriend(otherKid.id)}"> Add Friend</a> #{/else}
+						#{/if}<br>
+		</span>
+    #{/list}
+#{/if}
+#{else}
+<br>
+<br>
+	No results found !
+#{/else}

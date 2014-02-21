@@ -1,0 +1,31 @@
+# Users
+
+models.User(mohammad):
+    username:   md
+    password:   foobar
+    name:       mohammad
+
+# Friends
+
+models.Friend(h1):    
+    name:       Zead
+    city:       Munich
+    country:    Germany
+    
+models.Friend(h2):    
+    name:       Mohammad 
+    city:       London    
+    country:    UK
+
+models.Friend(h3):    
+    name:       raen 
+    city:       paris   
+    country:    France
+
+models.Friend(h4):    
+    name:       laura 
+    city:       NY    
+    country:    USA
+
+    
+    

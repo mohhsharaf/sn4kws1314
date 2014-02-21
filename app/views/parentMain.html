@@ -1,0 +1,30 @@
+#{extends 'main.html'/}
+        
+        <div id="header">
+            <h1>Social Network For Kids</h1>
+            #{if parent?.id}
+                <div id="options">
+                    Connected as ${parent.username}
+                    |
+                    <a href="@{Index.logout()}">Logout</a>
+                </div>
+            #{/if}
+        </div>
+        
+        <div id="content">
+            #{if flash.error}
+                <p class="fError">
+                    <strong>${flash.error}</strong>
+                </p>
+            #{/if}
+            #{if flash.success}
+                <p class="fSuccess">
+                    <strong>${flash.success}</strong>
+                </p>
+            #{/if}
+            
+            #{doLayout /}
+        </div>
+        
+        <div id="footer">
+       </div>

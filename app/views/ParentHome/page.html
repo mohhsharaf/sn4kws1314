@@ -1,0 +1,58 @@
+#{extends 'parentMain.html' /}
+#{set title:parent.username /}
+
+Parent Home
+
+
+#{if parent.kids }
+<table>
+         <tr>
+             <th>Name</th>                
+             <th></th>        
+        </tr>
+        <tbody>
+            #{list parent.kids, as:'kid'}
+                <tr>                    
+                    <td>
+                        ${kid.name}
+                    </td>                                       
+                    <td> <a href="@{removeKid(kid.id)}"> Remove </a> </td>
+                    
+                </tr>
+            #{/list}
+        </tbody>
+    </table>
+   
+#{/if}
+
+
+    #{form @addKid()}
+    #{field 'kid.name', enctype:'multipart/form-data'}
+        <p>
+            <strong>Kid Name:</strong> <input type="text" name="kidName" size="16"> *
+            
+        </p>
+    #{/field}
+    #{field 'kid.password'}
+        <p>
+            <strong>Kid Password:</strong> <input type="text" name="kidPassword" size="16"> *
+ 
+        </p>
+    #{/field}
+    #{field 'kidPicture.imageBlob'}
+        <p>
+            <strong>Kid Picture:</strong> <input type="file" name="kidPicture.imageBlob" />
+ 
+        </p>
+    #{/field}
+ 
+    <p class="buttons">
+        <input type="submit" value="Add Kid"> <a href="@{addKid()}">Cancel</a>    
+    </p>
+#{/form}
+
+
+
+#{if parent.kids }
+	<a href="@{KidLogin.page()}">To login page of kids</a>
+#{/if}

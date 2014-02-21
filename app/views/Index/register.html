@@ -1,0 +1,40 @@
+#{extends 'main.html' /}
+#{set title:'Register' /}
+
+<h1>Parent Register</h1>
+
+#{form @saveUser()}
+    #{field 'parent.username'}
+        <p class="${field.errorClass}">
+            <strong>Username:</strong> <input type="text" name="${field.name}" size="16" value="${parent?.username}"> *
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'parent.age'}
+        <p class="${field.errorClass}">
+            <strong>Age:</strong> <input type="text" name="${field.name}" size="16" value="${parent?.age}"> *
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'parent.email'}
+        <p class="${field.errorClass}">
+            <strong>E-mail:</strong> <input type="text" name="${field.name}" size="16" value="${parent?.email}"> *
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'parent.password'}
+        <p class="${field.errorClass}">
+            <strong>Password:</strong> <input type="password" name="${field.name}" size="16" value="${parent?.password}"> *
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'verifyPassword'}
+        <p class="${field.errorClass}">
+            <strong>Verify password:</strong> <input type="password" name="${field.name}" size="16" value="${verifyPassword}"> *
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}    
+    <p class="buttons">
+        <input type="submit" value="Register"> <a href="@{index()}">Cancel</a>    
+    </p>
+#{/form}
