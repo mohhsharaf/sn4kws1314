@@ -5,23 +5,29 @@
 
 <div id="login">
     
-    
+
     #{form @login(), id:'formLogin'}
+    <div class="container">
         <p class="field">
             <label>Username:</label>
             <input type="text" name="username" size="19" value="${flash.username}" />
         </p>
+        </br>
         <p class="field">
             <label>Password:</label>
             <input type="password" name="password" size="19"/>
-        </p>    
+        </p>  
+  		</br>
         <p class="buttons">
             <input type="submit" value="Login" />
         </p> 
+    </div>
     #{/form}
-
+    <div class="container">
     <p>
-        <a href="@{register()}">Not a member yet ? Signup now !</a>
+        <a href="@{register()}">Signup</a>
     </p>
+    </div>
+    </div>
 
-</div>
+

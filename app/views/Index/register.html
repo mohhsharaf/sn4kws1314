@@ -1,8 +1,10 @@
 #{extends 'main.html' /}
 #{set title:'Register' /}
 
+<div class="container">
 <h1>Parent Register</h1>
-
+</div>
+<div>
 #{form @saveUser()}
     #{field 'parent.username'}
         <p class="${field.errorClass}">

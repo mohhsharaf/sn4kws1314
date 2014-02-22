@@ -1,9 +1,13 @@
 html {
-    background: #FFFFFF;
+    background: #364B66 !important;  /* //#FFFFFF; */
+    /* font-family: Helvetica, Arial, Sans !important; */
+    /* background: url("/images/background1.png"); */
 }
 /* background: #FFFFFF;e0e0e0 */
 body {
-    width: 790px;
+    width: 800px;
+    
+    padding: 0 30px;
     margin: 10px auto;
     font-family: Arial;
     font-size: 100%;
@@ -13,6 +17,10 @@ body {
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.2);
     -moz-border-radius: 8px;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.2);
+    
+    /* width: 900px;
+    padding: 0 30px;
+    margin: auto; */
 }
 
 a {
@@ -37,6 +45,8 @@ a {
 
 #content {
     padding: 20px;
+    /* right: 50px; */
+    
 }
 
 
@@ -109,7 +119,7 @@ th {
 
 td, th {
     padding: 5px;
-    text-align: left;
+    text-align: center;
     border-right: 1px solid #aaa;
     border-bottom: 1px solid #aaa;
 }
@@ -160,17 +170,23 @@ form .hasError .error {
 }
 
 form .buttons {
+    
+
     text-align: left;
     background: #dedede;
+    
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 20px; 
+    
+    /* background-color: #ecf0f1 !important;
+	color: #2d525d; */
 }
 
 /** Footer **/
 
 #footer {
-    padding: 20px;
-    font-size: 70%;
+    padding: 10px;
+    font-size: 50%;
     border-top: 1px dotted #ccc;
     text-align: center;
 }
