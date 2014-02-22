@@ -1,53 +1,86 @@
-#{extends 'parentMain.html' /}
-#{set title:parent.username /}
+#{extends 'parentMain.html' /} #{set title:parent.username /} Parent
+Home #{form @addKid()} #{field 'kid.name',
+enctype:'multipart/form-data'}
+<p>
+	<strong>Kid Name:</strong> <input type="text" name="kidName" size="16">
+	*
 
-Parent Home
+</p>
+#{/field} #{field 'kid.password'}
+<p>
+	<strong>Kid Password:</strong> <input type="text" name="kidPassword"
+		size="16"> *
+
+</p>
+#{/field}
+
+<p class="buttons">
+	<input type="submit" value="Add Kid"> <a href="@{addKid()}">Cancel</a>
+</p>
+#{/form} #{if parent.kids }
+<style>
+.imgPreview {
+	width: 70px;
+}
+
+.friendInfo {
+	width: 300px;
+	float: left;
+}
+
+.kidEntry {
+	min-height: 60px;
+	width: 300px;
+	border-style: solid;
+	border-color: rgb(179, 173, 173);
+	border-width: 1px;
+		margin: 5px;
+	
+}
+</style>
+<div id="kidsList" style="position: relative;">
+	#{list parent.kids, as:'kid'}
+	<div class="kidEntry">
 
 
-    #{form @addKid()}
-    #{field 'kid.name', enctype:'multipart/form-data'}
-        <p>
-            <strong>Kid Name:</strong> <input type="text" name="kidName" size="16"> *
-            
-        </p>
-    #{/field}
-    #{field 'kid.password'}
-        <p>
-            <strong>Kid Password:</strong> <input type="text" name="kidPassword" size="16"> *
- 
-        </p>
-    #{/field}
- 
-    <p class="buttons">
-        <input type="submit" value="Add Kid"> <a href="@{addKid()}">Cancel</a>    
-    </p>
-#{/form}
+		
 
-#{if parent.kids }
-<table>
-         <tr>
-             <th>Name</th>                
-             <th></th>        
-        </tr>
-        <tbody>
-            #{list parent.kids, as:'kid'}
-                <tr>                    
-                    <td>
-                    	<img src="@{RequestUtils.renderUserImage(kid.image.id)}"/>
-                         <a href= "@{ParentEditKid.page(kid.id)}">${kid.name}</a>
-                    </td>                                       
-                    <td> <a href="@{removeKid(kid.id)}"> Remove </a> </td>
-                    
-                </tr>
-            #{/list}
-        </tbody>
-    </table>
-   
+		<div class="friendInfo">
+			<img class="imgPreview"
+				src="@{RequestUtils.renderUserImage(kid.image.id)}" /> <a
+				href="@{ParentEditKid.page(kid.id)}">${kid.name}</a>
+		</div>
+		<style>
+.icon {
+	width: 17px;
+}
+.remButton {
+	 display: inline-block;
+	 padding-top: 15px;
+	 padding-left: 70px;
+}
+
+.friendInfo {
+	width: 150px;
+	height: 50px;
+	float: left;
+}
+
+</style>
+		<div class="friendInfo">
+
+			<a class="remButton" href="@{removeKid(kid.id)}"> <img
+				class="icon" src="/public/images/delete.png"> Delete
+			</a>
+		</div>
+	</div>
+	#{/list}
+</div>
+
+#{/if} #{if parent.kids }
+<a href="@{KidLogin.page()}">To login page of kids</a>
 #{/if}
 
-
-
-
-#{if parent.kids }
-	<a href="@{KidLogin.page()}">To login page of kids</a>
-#{/if}
+<script>
+	
+</script>

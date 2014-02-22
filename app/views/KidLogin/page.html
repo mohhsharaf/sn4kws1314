@@ -2,39 +2,45 @@
 #{set title:parent.username /}
 
 Kid Login
+<style>
+.kidImgPreview {
+	width: 90px;
+}
 
+.kidEntry {
+	border-style: solid;
+	border-color: rgb(179, 173, 173);
+	border-width: 1px;
+		margin: 10px;
+	width: 300px;
+}
+
+.kidLoginForm {
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+</style>
 
 #{if parent.kids }
-<table>
-         <tr>
-             <th>Name</th>                
-             <th></th>        
-        </tr>
-        <tbody>
+
             #{list parent.kids, as:'kid'}
-                <tr>                    
-                    <td>
-                        ${kid.name}
-                    </td>                                       
-                    <td>
-                    <img src="@{RequestUtils.renderUserImage(kid.image.id)}"/>
+             <div class="kidEntry">
+                   
+                    <img class="kidImgPreview" src="@{RequestUtils.renderUserImage(kid.image.id)}"/>
+                     ${kid.name}
+                    <div class="kidLoginForm">
                     #{form @login(kid.id)}
 				    #{field 'kid.name'}
-				        <p>
-				            <input type="text" name="kidPassword" size="16"> *
-				            
-				        </p>
+				    <input type="text" name="kidPassword" size="16"/> *
 				    #{/field}
-				    
-				    <input type="submit" value="Login"/>  
-				    
+				    <input type="submit" class="button" value="Login" style=" width: 60px; margin-bottom: 11px;"/>
 				    #{/form}
-                     </td>
-                    
-                </tr>
+                    </div>
+				    
+
+			</div>
             #{/list}
-        </tbody>
-    </table>
    
 #{/if}
 
