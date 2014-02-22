@@ -1,0 +1,44 @@
+#{extends 'parentMain.html' /}
+#{set title:parent.username /}
+
+
+<script>
+
+$(function() {
+   //alert("hello");
+});
+
+</script>
+Parent View Kid Friends
+
+
+
+ 
+<img src="@{RequestUtils.renderUserImage(kid.image.id)}"/>
+
+<a href= "@{ParentEditKid.page(kid.id)}">${kid.name}</a>    <br>
+
+
+<table>
+        <tbody>
+            #{list kid.friends, as:'kidFriend'}
+                <tr>                    
+                    <td>
+                        ${kidFriend.name}
+                    </td>                                       
+                    <td>
+                    <img src="@{RequestUtils.renderUserImage(kidFriend.image.id)}"/>
+                     </td>                                       
+                    <td>
+                    	<button onclick="removeKid(${kid.id})">Remove</button>
+                     </td>
+                    
+                </tr>
+            #{/list}
+        </tbody>
+    </table>
+    
+    
+
+
+<a href="@{ParentHome.page()}">To Parent Home page</a>

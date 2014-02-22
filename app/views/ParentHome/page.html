@@ -14,7 +14,8 @@ Parent Home
             #{list parent.kids, as:'kid'}
                 <tr>                    
                     <td>
-                        ${kid.name}
+                    	<img src="@{RequestUtils.renderUserImage(kid.image.id)}"/>
+                         <a href= "@{ParentEditKid.page(kid.id)}">${kid.name}</a>
                     </td>                                       
                     <td> <a href="@{removeKid(kid.id)}"> Remove </a> </td>
                     

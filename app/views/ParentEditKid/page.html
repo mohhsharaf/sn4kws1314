@@ -1,0 +1,69 @@
+#{extends 'parentMain.html' /}
+#{set title:parent.username /}
+
+
+<script>
+
+function editName()
+{
+	var editNameRoute = #{jsRoute @ParentEditKid.editName(':kidId', ':newName') /} ;
+	
+	var ss = $("#kid_name_text_input").val();
+	
+	$.ajax({
+		    url: editNameRoute.url({kidId: ${kid.id}, newName: ss}),
+		    success: function (postsData) {
+		             	//alert("succesfful");
+		            },
+	       error: function (xhr, ajaxOptions, thrownError) {
+	               	alert(thrownError);
+	       		}
+	});
+}
+
+
+
+$(function() {
+   //alert("hello");
+});
+
+</script>
+Parent Edit Kid
+
+
+
+#{form @ParentEditKid.editPicture(kid.id), enctype:'multipart/form-data'}
+ 
+<img src="@{RequestUtils.renderUserImage(kid.image.id)}"/>
+<input type="file" id="kid_image_input" name="imageBlob"/>
+<input type="submit" value="Upload"/>
+
+#{/form}
+
+<table>
+         <tr>
+             <th></th>                
+             <th></th>        
+        </tr>
+        <tbody>                
+                <tr>                                                    
+                    <td>
+                        Name
+                    </td>                                       
+                    <td> <input type="text" value="${kid.name}" id="kid_name_text_input" onchange="editName();"/> </td>               
+                </tr>
+                
+                <tr>                                                    
+                    <td>
+                        Password
+                    </td>                                       
+                    <td> <input type="text" value="${kid.password}" id="kid_password_text_input" onchange="editPassword();"/> </td>
+                </tr>
+        </tbody>
+    </table>
+    
+    
+
+<a href="@{ParentViewKidFriends.page(kid.id)}">View Kid Friends</a> <br>
+    
+<a href="@{ParentHome.page()}">To Parent Home page</a>
