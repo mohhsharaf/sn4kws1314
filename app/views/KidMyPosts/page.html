@@ -5,7 +5,7 @@ Kid Home
 
 
 #{form @newPost(), enctype:'multipart/form-data'}
-		<p>
+        <p>
             <input type="text" name="postText" size="16">
         </p>
         <p>
@@ -16,7 +16,7 @@ Kid Home
     
 #{/form}
 
-#{list wallPosts, as:'kidPost'}
+#{list kid.posts, as:'kidPost'}
 	<div>
 		<a href="@{KidViewProfile.page(kidPost.kid.id)}">${kidPost.kid.name}</a><br>
 		${kidPost.text} <br>

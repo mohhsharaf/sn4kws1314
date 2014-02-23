@@ -38,7 +38,7 @@ public class ParentViewKidFriends extends Controller {
 		kid.save();
 		otherKid.save();
 		
-		ok();
+		page(kidId);
 	}
 }
 

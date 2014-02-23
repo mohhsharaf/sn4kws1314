@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import play.db.jpa.Blob;
@@ -26,6 +27,13 @@ public class Kid extends Model{
 	
 	@OneToOne
 	public UserImage image;
+	
+	@OneToMany(mappedBy = "kid", cascade = CascadeType.ALL)
+	public List<Post> posts;
+	
+	
+//	@OneToMany(mappedBy = "kid", cascade = CascadeType.ALL)
+//	public List<PostComment> comments;
 	
 	public Kid(String name, String password, Parent parent, Blob imageBlob)
 	{

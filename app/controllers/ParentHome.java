@@ -8,6 +8,8 @@ import play.mvc.Controller;
 public class ParentHome extends Controller {
 	public static void page()
 	{
+		session.remove("kidId");
+		
 		if(session.contains("parentId"))
 		{
 					

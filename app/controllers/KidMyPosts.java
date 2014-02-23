@@ -9,7 +9,7 @@ import models.PostComment;
 import play.db.jpa.Blob;
 import play.mvc.Controller;
 
-public class KidHome extends Controller {
+public class KidMyPosts extends Controller {
 	public static void page()
 	{
 		Kid kid = null;
@@ -26,11 +26,11 @@ public class KidHome extends Controller {
 			return;
 		}
 				
-		List<Post> wallPosts = Post.getPostsForWall(kid);
+		List<Post> wallPosts = kid.posts;
 		
 		render(kid, wallPosts);
 	}
-
+	
 	public static void newPost(String postText, Blob postImageBlob)
 	{
 		System.out.println("TEXT :" + postText);
@@ -56,7 +56,7 @@ public class KidHome extends Controller {
 		
 		page();
 	}
-
+	
 	public static void newComment(Long kidPostId, String commentText)
 	{		
 		Kid kid = null;
@@ -81,5 +81,6 @@ public class KidHome extends Controller {
 		
 		page();
 	}
+
 }
 

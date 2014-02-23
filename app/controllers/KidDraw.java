@@ -7,7 +7,21 @@ import play.mvc.Controller;
 public class KidDraw extends Controller {
 	public static void page()
 	{
-		render();
+		Kid kid = null;
+		if(session.get("kidId") != null)
+		{
+			Long kidId = Long.parseLong(session.get("kidId"));
+			
+			kid = Kid.findById(kidId);
+		}
+		
+		if(kid == null)
+		{
+			ParentHome.page();
+			return;
+		}
+				
+		render(kid);
 	}
 }
 

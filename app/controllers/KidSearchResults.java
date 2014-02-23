@@ -13,10 +13,7 @@ public class KidSearchResults extends Controller {
 	}
 	
 	public static void page(String searchString)
-	{
-
-		List<Kid> kidList = KidManageFriends.searchByName(searchString);
-		
+	{		
 		Kid kid = null;
 		if(session.get("kidId") != null)
 		{
@@ -27,12 +24,14 @@ public class KidSearchResults extends Controller {
 		
 		if(kid == null)
 		{
-
-			System.out.println(kidList.size());
-			render(searchString, kidList);
+			ParentHome.page();
 			return;
 		}
+
+		List<Kid> kidList = KidManageFriends.searchByName(searchString);
 		
+		//remove the kid himself from list !
+		kidList.remove(kid);
 		
 		List<Boolean> kidFriends = new LinkedList<Boolean>();
 		for(Object kidObject : kidList)
@@ -43,7 +42,7 @@ public class KidSearchResults extends Controller {
 		}
 
 		System.out.println(kidList.size());
-		render(searchString, kidList, kidFriends);
+		render(kid, searchString, kidList, kidFriends);
 		
 		
 	}

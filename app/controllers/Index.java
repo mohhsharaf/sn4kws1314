@@ -32,7 +32,8 @@ public class Index extends Controller {
 //        }
     	if(session.contains("parentId"))
     	{
-    		ParentHome.page();
+    		KidLogin.page();
+//    		ParentHome.page();
     	}
     	else
     	{

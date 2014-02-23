@@ -8,7 +8,7 @@ Kid search results
 <br>
 <br>
 	#{list kidList, as:'otherKid'}
-		<span>${otherKid.name}  #{if kidFriends} #{if kidFriends.get(otherKid_index -1) == true} <a href="@{KidSearchResults.removeFriend(otherKid.id)}"> Remove Friend</a> #{/if} 
+		<span> <a href="@{KidViewProfile.page(otherKid.id)}">${otherKid.name}</a> #{if kidFriends} #{if kidFriends.get(otherKid_index -1) == true} <a href="@{KidSearchResults.removeFriend(otherKid.id)}"> Remove Friend</a> #{/if} 
 											#{else} <a href="@{KidSearchResults.addFriend(otherKid.id)}"> Add Friend</a> #{/else}
 						#{/if}<br>
 		</span>

@@ -1,0 +1,77 @@
+#{extends 'kidMain.html' /}
+#{set title:tkid.name /}
+
+
+<script>
+
+$(function() {
+   //alert("hello");
+});
+
+</script>
+Kiew View Profile
+
+
+
+ 
+<img src="@{RequestUtils.renderUserImage(tkid.image.id)}"/>
+
+
+<table>
+         <tr>
+             <th></th>                
+             <th></th>        
+        </tr>
+        <tbody>                
+                <tr>                                                    
+                    <td>
+                        Name
+                    </td>                                       
+                    <td> <span> ${tkid.name} </span> </td>               
+                </tr>
+                
+        </tbody>
+    </table>
+    
+    #{if areFriends}
+    	#{form @removeFriend(tkid.id)}
+    		<input type="submit" value="Remove Friend"/>
+    	#{/form}
+    #{/if}
+    #{else}
+    	#{form @addFriend(tkid.id)}
+    		<input type="submit" value="Add Friend"/>
+    	#{/form}    
+    #{/else}
+    
+
+#{list tkid.posts, as:'kidPost'}
+	<div>
+		<a href="@{KidViewProfile.page(kidPost.kid.id)}">${kidPost.kid.name}</a><br>
+		${kidPost.text} <br>
+		${kidPost.time} <br>
+		
+		#{if kidPost.imageBlob.type()} <img src="@{RequestUtils.renderPostImage(kidPost.id)}"/> <br> #{/if}
+		
+		#{if kid}
+		<div>
+			#{list kidPost.comments, as:'comment'}
+				<a href="@{KidViewProfile.page(comment.kid.id)}">${comment.kid.name}</a><br>
+				${comment.kid.name}<br>
+				${comment.text}<br>
+				${comment.time}<br><br>
+			#{/list}
+			
+			#{form @newComment(kidPost.id)}
+			        <p>
+			            <input type="text" name="commentText" size="16">
+			        </p>			    
+			    	<input type="submit" value="Comment"/>  
+			    
+			#{/form}
+			
+		</div>
+		#{/if}
+	</div>
+#{/list}
+        

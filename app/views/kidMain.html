@@ -1,13 +1,14 @@
 #{extends 'main.html'/}
-        
+
+#{if kid}        
 <div id="search_div">
 	#{form @KidSearchResults.search()}
         <p>
-            <input type="text" name="searchString" size="16" #{if searchString} value="${searchString}" #{/if}> <input type="submit" value="Search">
+            <input type="text" name="searchString" size="16" #{if searchString} value="${searchString}" #{/if}> 
+            <input type="submit" class="btn" value="Search">
         </p>
 #{/form}
 
-#{if kid}
 <a href="@{KidLogin.logout()}">Kid Logout</a>
 #{/if}
 #{else}
@@ -16,5 +17,9 @@
 
 </div>
 
-
+<a href="@{KidHome.page()}">Home</a>
+<a href="@{KidMyPosts.page()}">My Posts</a>
+<a href="@{KidDraw.page()}">Draw with a Friend</a>
+<a href="@{KidViewProfile.page(kid.id)}">My Friends</a>
+<br>
 #{doLayout /}

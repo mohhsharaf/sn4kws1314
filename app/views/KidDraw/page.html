@@ -2,6 +2,24 @@
 
 Kid Draw
 
+<script>
+var TogetherJSConfig_cloneClicks = false;
+var TogetherJSConfig_dontShowClicks = true;
+var TogetherJSConfig_suppressInvite = true;
+var TogetherJSConfig_suppressJoinConfirmation = true;
+var TogetherJSConfig_findRoom = "sn4k"
+var TogetherJSConfig_autoStart = true;
+var TogetherJSConfig_siteName = "SN4K";
+var TogetherJSConfig_getUserName = function () {return '${kid.name}';};
+var TogetherJSConfig_includeHashInUrl = true;
+var TogetherJSConfig_storagePrefix = "127.0.0.0"
+
+TogetherJSConfig_on_ready = function () {
+	  //sendTogetherJSURLToServer(TogetherJS.shareUrl());
+	};
+
+</script>
+<script src="/public/javascripts/togetherjs-min.js"></script>
 
 <style>
 .upper-button {
@@ -22,16 +40,6 @@ Kid Draw
 }
 </style>
 
-<script>
-var TogetherJSConfig_cloneClicks = false;
-var TogetherJSConfig_dontShowClicks = true;
-var TogetherJSConfig_suppressInvite = true;
-var TogetherJSConfig_suppressJoinConfirmation = true;
-var TogetherJSConfig_findRoom = "sn4k"
-
-</script>
-<script src="https://togetherjs.com/togetherjs-min.js"></script>
-
 <div class="btn-group btn-group-justified" style="margin-right: auto; margin-top: 10px; width: 70%;"> 
   <a class="btn btn-info color-picker upper-button">Blue</a>          
   <a class="btn btn-success color-picker">Green</a>
@@ -40,7 +48,7 @@ var TogetherJSConfig_findRoom = "sn4k"
   <a class="btn btn-success color-picker black-pick upper-button" style="border-bottom-width: 0px;">Black</a>
 </div>
 <div class="clearfix"></div>
-<div id="sketchContainer" style="width: 70%; height: 300px; border: 1px solid rgba(0,0,0,0.2)"><canvas id="sketch"></canvas></div>
+<div id="sketchContainer" style="width: 100%; height: 300px; border: 1px solid rgba(0,0,0,0.2)"><canvas id="sketch"></canvas></div>
 <div class="btn-group btn-group-justified" style="margin-right: auto; width: 70%;"> 
   <a class="btn btn-info user-color-pick bottom-button" style="width: 30%;">User Color</a>
   <a class="btn btn-success plus-size" style="width: 15%;">
@@ -61,6 +69,10 @@ var TogetherJSConfig_findRoom = "sn4k"
 
 
 <script>
+
+$(function() {
+	   //alert("hello");
+	
 //get the canvas element and its context
 var canvas = document.getElementById('sketch');
 var context = canvas.getContext('2d');
@@ -248,7 +260,9 @@ $(document).ready(function () {
 
   // Redraws the lines whenever the canvas is resized:
   $(window).resize(function() {
+	  
     if ($('#sketchContainer').width() != oWidth) {
+    	
       canvas.width = $('#sketchContainer').width();
       canvas.height = (canvas.width/1140)*400;
       $('#sketchContainer').outerHeight(String(canvas.height)+"px", true);
@@ -297,4 +311,8 @@ $(document).ready(function () {
   });          
 });
 
+});
+
+
+$(function() {})
 </script>

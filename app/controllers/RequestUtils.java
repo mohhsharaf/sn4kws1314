@@ -1,12 +1,7 @@
 package controllers;
 
-import java.awt.Image;
-
+import models.Post;
 import models.UserImage;
-import net.sf.oval.guard.Post;
-
-import org.h2.engine.User;
-
 import play.mvc.Controller;
 
 public class RequestUtils extends Controller
@@ -16,5 +11,13 @@ public class RequestUtils extends Controller
 		UserImage image = UserImage.findById(imageId);
 		response.setContentTypeIfNotSet(image.imageBlob.type());
 		renderBinary(image.imageBlob.get());
+	}
+	
+	
+	public static void renderPostImage(Long postId)
+	{
+		Post post = Post.findById(postId);
+		response.setContentTypeIfNotSet(post.imageBlob.type());
+		renderBinary(post.imageBlob.get());
 	}
 }

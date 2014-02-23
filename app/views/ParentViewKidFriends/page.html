@@ -21,16 +21,18 @@ Parent View Kid Friends
 
 <table>
         <tbody>
-            #{list kid.friends, as:'kidFriend'}
+            #{list kid.friends, as:'otherKid'}
                 <tr>                    
                     <td>
-                        ${kidFriend.name}
+                        ${otherKid.name}
                     </td>                                       
                     <td>
-                    <img src="@{RequestUtils.renderUserImage(kidFriend.image.id)}"/>
+                    <img src="@{RequestUtils.renderUserImage(otherKid.image.id)}"/>
                      </td>                                       
                     <td>
-                    	<button onclick="removeKid(${kid.id})">Remove</button>
+                    	#{form @removeFriend(kid.id, otherKid.id)}
+                    		<input type="submit" value="Remove"/>
+                    	#{/form}
                      </td>
                     
                 </tr>
